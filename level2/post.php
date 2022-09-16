@@ -7,8 +7,11 @@
     <title>Post</title>
 </head>
 <body>
-    <!-- action default is linking on the same page || method default is "get"  -->
-    <form action="post-key.php" method="post">
+    <?php if( isset($_POST["submit"]) ) : ?>
+        <h1>Hello, Welcome <?=$_POST["name"]; ?>!</h1>
+    <?php endif; ?>
+    <!-- action default is linking on the same page || method default is "get" -->
+    <form action="" method="post">
         Masukkan Nama : 
         <input type="text" name="name">
         <br>
