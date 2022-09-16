@@ -10,7 +10,7 @@
     
     <form action="post-key.php" method="post">
         Masukkan Nama : 
-        <input type="text" name="nama">
+        <input type="text" name="name">
         <br>
         <button type="submit" name="submit">Kirim</button>
     </form>
