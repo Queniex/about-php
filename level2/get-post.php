@@ -24,9 +24,11 @@ $animals = [
     <h1>Animal</h1>
     <ul>
         <?php foreach( $animals as $animal) : ?>
-            <li><a href="get.php"><?php echo $animal["name"]?></a>
+            <li> 
+                <a href="get.php?name=<?= $animal["name"]; ?>&type=<?= $animal["type"];?>&leg=<?= $animal["leg"];?>"> 
+            <?= $animal["name"]; ?></a>
             </li>
-        <?php endforeach ?>
+        <?php endforeach ?> 
     </ul>
 </body>
 </html>
