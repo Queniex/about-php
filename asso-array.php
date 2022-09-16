@@ -3,6 +3,16 @@ $students = [
     ["Quenie Salbiyah", 18 , 2107411030],
     ["Salbiyah Quenie", 18 , 2107411031]
 ];
+
+// Array Associative
+// Same as the numeric array, but using a string as the key (infront of)
+$animals = [
+    [ "Name" => "cat", "Food" => "carnivore", "leg" => 4 ],
+    [ "Name" => "dog", "Food" => "carnivore", "leg" => 4 ]
+];
+
+// How to preview of array associative
+// echo $animals[0]["Name"];
 ?>
 
 <!DOCTYPE html>
@@ -17,11 +27,21 @@ $students = [
     <h1> List of People </h1>
 
     <?php foreach( $students as $student) : ?>
+        
+    <hr>    
     <ul>
         <li>Name : <?php echo $student[0]; ?></li>
+        <h3>Fav Animal</h1>
+        <?php foreach ( $animals as $animal) : ?>
+          <ul>
+            <li>Type : <?php echo $animal["Name"]; ?></li>
+            <li>Kind : <?php echo $animal["Food"]; ?></li>
+          </ul>
+        <?php endforeach; ?>
         <li>Age : <?php echo $student[1]; ?></li>
         <li>Id : <?php echo $student[2]; ?></li>
     </ul>
+    <hr>
     <?php endforeach; ?>
 </body>
 </html>
