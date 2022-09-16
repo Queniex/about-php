@@ -7,7 +7,7 @@
     <title>Post</title>
 </head>
 <body>
-    
+    <!-- action default is linking on the same page || method default is "get"  -->
     <form action="post-key.php" method="post">
         Masukkan Nama : 
         <input type="text" name="name">
