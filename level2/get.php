@@ -1,16 +1,15 @@
 <?php
-    // $animals = [
-    //     ["name" => "cat", "type" => "carnivore", "leg" => 4, "image" => "about-php/level2/img/cat.jpg.png"],
-    //     ["name" => "cow", "type" => "herbivore", "leg" => 4, "image" => "about-php/level2/img/cow.jpg.png"],
-    //     ["name" => "monkey", "type" => "omnivore", "leg" => 2, "image" => "about-php/level2/img/monkey.jpg.png"]
-    // ];
+// it was empty b4
+// but, with this way it could be filled
+// $_GET["name"] = "Quenie Salbiyah";
+// $_GET["gender"] = "Girl";
+//var_dump($_GET);
 
-    // checking data from the $_GET key :
-    if( !isset($_GET["name"]) || !isset($_GET["type"]) || !isset($_GET["leg"]) ){
-        // redirect (to push user to enter from the link b4 (so there is key))
-        header("location: get-post.php");
-        exit;
-    }
+$animals = [
+    ["name" => "cat", "type" => "carnivore", "leg" => 4, "image" => "about-php/level2/img/cat.jpg.png"],
+    ["name" => "cow", "type" => "herbivore", "leg" => 4, "image" => "about-php/level2/img/cow.jpg.png"],
+    ["name" => "monkey", "type" => "omnivore", "leg" => 2, "image" => "about-php/level2/img/monkey.jpg.png"]
+];
 ?>
 
 <!DOCTYPE html>
@@ -19,13 +18,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Animal Detail</title>
+    <title>Get</title>
 </head>
 <body>
+    <h1>Animal</h1>
     <ul>
-        <li>Name : <?= $_GET["name"]; ?></li>
-        <li>Type : <?= $_GET["type"]; ?></li>
-        <li>Leg : <?= $_GET["leg"]; ?></li>
+        <?php foreach( $animals as $animal) : ?>
+            <li> 
+                <a href="get.php?name=<?= $animal["name"]; ?>&type=<?= $animal["type"];?>&leg=<?= $animal["leg"];?>"> 
+            <?= $animal["name"]; ?></a>
+            </li>
+        <?php endforeach ?> 
     </ul>
 </body>
 </html>
