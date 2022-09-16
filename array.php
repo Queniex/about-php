@@ -8,10 +8,10 @@ $day = array("monday", "tuesday");
 // new method
 $month = ["jan", "feb", "march"];
 
-//array could containt many type of value
+// array could containt many type of value
 $arr1 = [123, "text"];
 
-//preview of array
+// preview of array
 // var_dump() /print_r()
 echo "<br>";
 var_dump($day);
@@ -19,17 +19,23 @@ echo "<br>";
 echo "<hr>";
 echo $month[1];
 
-//adding new element on array
+// adding new element on array
 echo "<br>";
 echo "<hr>";
 $day[] = "wednesday";
 $day[] = "thursday";
 var_dump($day);
 
-//looping on array
+// looping on array
 echo "<br>";
 echo "<hr>";
 $numbers = [1,2,3,4,5];
+
+// array of array
+$students = [
+    ["Quenie Salbiyah", 18 , 2107411030],
+    ["Salbiyah Quenie", 18 , 2107411031]
+];
 ?>
 
 <!DOCTYPE html>
@@ -58,6 +64,12 @@ $numbers = [1,2,3,4,5];
             float: left;
             background-color:yellow;
         }
+        .square3{
+            line-height: 30px;
+            margin: 3px;
+            background-color:purple;
+            margin-bottom: 5px;
+        }
         .clear{
             clear: both;
         }
@@ -81,6 +93,19 @@ $numbers = [1,2,3,4,5];
     <?php foreach( $numbers as $number) : ?>  
         <div class="square2" style="background-color: lightblue"><?= $number; ?> </div>
     <?php endforeach; ?>   
+
+    <div class="clear"></div>
+
+    <!-- Preview array of array (but still error :3) -->
+    <!-- <?php // foreach ( $students as $student) : ?>
+        <div class="square3">
+            <ul>
+                <li>Name : <? // = student[0]; ?></li>
+                <li>Age : <? // = student[1]; ?></li>
+                <li>Id : <? // = student[2]; ?></li>
+            </ul>
+        </div>
+    <?php // endforeach; ?> -->
 
 </body>
 </html>
