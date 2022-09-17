@@ -26,7 +26,7 @@ if ( isset($_POST["submit"]) ){
     //     echo mysqli_error($conn);
     // }
 
-    if( tambah($_POST) > 0 ){
+    if( add($_POST) > 0 ){
        echo "data berhasil ditambahkan!"; 
     } else {
         echo "data gagal ditambahkan!";
