@@ -3,7 +3,15 @@
 $db = mysqli_connect("localhost", "root", "", "phpdasar");
 
 // get data from the table (using query) (string connection, sql query)
-mysqli_query($db, "SELECT * FROM mahasiswa" )
+$result = mysqli_query($db, "SELECT * FROM mahasiswa" );
+//var_dump($result); --> the easiest way to know if it work or not
+
+// get data from the result object -> fetch
+// there are 4 way : 
+// mysqli_fetch_row($result) -> return array numeric
+// mysqli_fetch_assoc($result) -> return array associative
+// mysqli_fetch_array($result) -> return both of the array type -> wasting memory
+// mysqli_fetch_object($result) -> return object
 
 ?>
 
