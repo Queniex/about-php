@@ -13,9 +13,9 @@ function query($query){
 
 function add($data){
     global $conn;
-    $nim = $data["Nim"];
-    $nama = $data["Nama"];
-    $gambar = $data["Gambar"];
+    $nim = htmlspecialchars($data["Nim"]);
+    $nama = htmlspecialchars($data["Nama"]);
+    $gambar = htmlspecialchars($data["Gambar"]);
 
     $query = "INSERT INTO mahasiswa 
                 VALUES
@@ -23,7 +23,6 @@ function add($data){
     mysqli_query($conn, $query);
 
     return mysqli_affected_rows($conn);
-
 }
 
 
