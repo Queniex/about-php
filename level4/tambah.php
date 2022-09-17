@@ -17,7 +17,13 @@ if ( isset($_POST["submit"]) ){
     mysqli_query($conn, $query);
 
     // check if data successfully insert
-    
+    if( mysqli_affected_rows($conn) > 0 ){
+        echo "Berhasil";
+    } else{
+        echo "gagal";
+        echo "<br>";
+        echo mysqli_error($conn);
+    }
 
 }
 
