@@ -1,6 +1,9 @@
 <?php
 // connect to database (host name, username of sql [root], password of sql, database name)
-mysqli_connect("localhost", "root", "", "phpdasar");
+$db = mysqli_connect("localhost", "root", "", "phpdasar");
+
+// get data from the table (using query) (string connection, sql query)
+mysqli_query($db, "SELECT * FROM mahasiswa" )
 
 ?>
 
