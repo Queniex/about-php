@@ -26,7 +26,7 @@
             <a href="">Edit</a>
             <a href="">Delete</a>
         </td>
-        <td><img src="img/cat.jpg.png"></td>
+        <td><img src="img/cat.jpg.png" width="100"></td>
         <td>2107411030</td>
         <td>Quenie Salbiyah</td>
     </tr>
