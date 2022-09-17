@@ -67,15 +67,15 @@ if ( isset($_POST["submit"]) ){
         <ul>
             <li>
                 <label for="Nim">Nim : </label>
-                <input type="text" id="Nim" name="Nim">
+                <input type="text" id="Nim" name="Nim" required>
             </li>
             <li>
                 <label for="Nama">Nama : </label>
-                <input type="text" id="Nama" name="Nama">
+                <input type="text" id="Nama" name="Nama" required>
             </li>
             <li>
                 <label for="Gambar">Gambar : </label>
-                <input type="text" id="Gambar" name="Gambar">
+                <input type="text" id="Gambar" name="Gambar" required>
             </li>
             <li>
                 <button type="submit" name="submit">Tambah Data!</button>
