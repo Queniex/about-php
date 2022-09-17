@@ -20,6 +20,18 @@
         <th>Nama</th>
     </tr>
 
+    <tr>
+        <td>1</td>
+        <td>
+            <a href="">Edit</a>
+            <a href="">Delete</a>
+        </td>
+        <td><img src="img/cat.jpg.png"></td>
+        <td>2107411030</td>
+        <td>Quenie Salbiyah</td>
+    </tr>
+
+
 </table>
 
 </body>
