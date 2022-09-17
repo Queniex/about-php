@@ -1,3 +1,9 @@
+<?php
+// connect to database (host name, username of sql [root], password of sql, database name)
+mysqli_connect("localhost", "root", "", "phpdasar");
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,7 +29,7 @@
     <tr>
         <td>1</td>
         <td>
-            <a href="">Edit</a>
+            <a href="">Edit</a> |
             <a href="">Delete</a>
         </td>
         <td><img src="img/cat.jpg.png" width="100"></td>
