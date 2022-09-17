@@ -11,4 +11,20 @@ function query($query){
     return $rows;
 }
 
+function add($data){
+    global $conn;
+    $nim = $data["Nim"];
+    $nama = $data["Nama"];
+    $gambar = $data["Gambar"];
+
+    $query = "INSERT INTO mahasiswa 
+                VALUES
+               ('', '$nama', '$nim', '$gambar')"; 
+    mysqli_query($conn, $query);
+
+    return mysqli_affected_rows($conn);
+
+}
+
+
 ?>

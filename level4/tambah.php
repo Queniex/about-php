@@ -1,28 +1,35 @@
 <?php
+require 'functions.php';
 // connect to DBMS
-$conn = mysqli_connect("localhost", "root", "", "phpdasar");
+// $conn = mysqli_connect("localhost", "root", "", "phpdasar");
 
 // checking is submit button has been press yet.
 if ( isset($_POST["submit"]) ){
     
     // taking data from every element of the form
-    $nim = $_POST["Nim"];
-    $nama = $_POST["Nama"];
-    $gambar = $_POST["Gambar"];
+    // $nim = $_POST["Nim"];
+    // $nama = $_POST["Nama"];
+    // $gambar = $_POST["Gambar"];
 
     //insert query
-    $query = "INSERT INTO mahasiswa 
-                VALUES
-               ('', '$nama', '$nim', '$gambar')"; 
-    mysqli_query($conn, $query);
+    // $query = "INSERT INTO mahasiswa 
+    //             VALUES
+    //            ('', '$nama', '$nim', '$gambar')"; 
+    // mysqli_query($conn, $query);
 
     // check if data successfully insert
-    if( mysqli_affected_rows($conn) > 0 ){
-        echo "Berhasil";
-    } else{
-        echo "gagal";
-        echo "<br>";
-        echo mysqli_error($conn);
+    // if( mysqli_affected_rows($conn) > 0 ){
+    //     echo "Berhasil";
+    // } else{
+    //     echo "gagal";
+    //     echo "<br>";
+    //     echo mysqli_error($conn);
+    // }
+
+    if( tambah($_POST) > 0 ){
+       echo "data berhasil ditambahkan!"; 
+    } else {
+        echo "data gagal ditambahkan!";
     }
 
 }
