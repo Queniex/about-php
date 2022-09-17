@@ -33,7 +33,7 @@ $mahasiswa = query("SELECT * FROM mahasiswa");
         <td><?= $i; ?></td>
         <td>
             <a href="">Edit</a> |
-            <a href="">Delete</a>
+            <a href="delete.php?id=<?= $row["Id"]; ?>">Delete</a>
         </td>
         <td><img src="img/<?= $row["Gambar"]; ?>" width="60"></td>
         <td><?php echo $row["Nim"]; ?></td>
