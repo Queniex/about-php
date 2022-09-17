@@ -13,6 +13,10 @@ $result = mysqli_query($db, "SELECT * FROM mahasiswa" );
 // mysqli_fetch_array($result) -> return both of the array type -> wasting memory
 // mysqli_fetch_object($result) -> return object
 
+// while ( $mhs = mysqli_fetch_assoc($result) ){
+//     var_dump($mhs["Nama"]);
+// }
+
 ?>
 
 <!DOCTYPE html>
@@ -37,16 +41,20 @@ $result = mysqli_query($db, "SELECT * FROM mahasiswa" );
         <th>Nama</th>
     </tr>
 
+    <?php $i = 1; ?>
+    <?php while( $row = mysqli_fetch_assoc($result) ) : ?>
     <tr>
-        <td>1</td>
+        <td><?= $i; ?></td>
         <td>
             <a href="">Edit</a> |
             <a href="">Delete</a>
         </td>
-        <td><img src="img/cat.jpg.png" width="100"></td>
-        <td>2107411030</td>
-        <td>Quenie Salbiyah</td>
+        <td><img src="img/<?= $row["Gambar"]; ?>" width="60"></td>
+        <td><?= $row["Nim"]; ?></td>
+        <td><?= $row["Nama"]; ?></td>
     </tr>
+    <?php $i++; ?>
+    <?php endwhile ?>
 
 
 </table>
