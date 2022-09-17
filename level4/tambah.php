@@ -27,9 +27,19 @@ if ( isset($_POST["submit"]) ){
     // }
 
     if( add($_POST) > 0 ){
-       echo "data berhasil ditambahkan!"; 
+       echo "
+            <script>
+                alert('data berhasil ditambahkan!')
+                document.location.href = 'index.php'
+            </script>
+       "; 
     } else {
-        echo "data gagal ditambahkan!";
+        echo "
+            <script>
+                alert('data gagal ditambahkan!')
+                document.location.href = 'index.php'
+            </script>
+       "; 
     }
 
 }
