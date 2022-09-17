@@ -1,22 +1,6 @@
 <?php
-// connect to database (host name, username of sql [root], password of sql, database name)
-$db = mysqli_connect("localhost", "root", "", "phpdasar");
-
-// get data from the table (using query) (string connection, sql query)
-$result = mysqli_query($db, "SELECT * FROM mahasiswa" );
-//var_dump($result); --> the easiest way to know if it work or not
-
-// get data from the result object -> fetch
-// there are 4 way : 
-// mysqli_fetch_row($result) -> return array numeric
-// mysqli_fetch_assoc($result) -> return array associative
-// mysqli_fetch_array($result) -> return both of the array type -> wasting memory
-// mysqli_fetch_object($result) -> return object
-
-// while ( $mhs = mysqli_fetch_assoc($result) ){
-//     var_dump($mhs["Nama"]);
-// }
-
+require 'functions.php';
+$mahasiswa = query("SELECT * FROM mahasiswa");
 ?>
 
 <!DOCTYPE html>
@@ -42,7 +26,7 @@ $result = mysqli_query($db, "SELECT * FROM mahasiswa" );
     </tr>
 
     <?php $i = 1; ?>
-    <?php while( $row = mysqli_fetch_assoc($result) ) : ?>
+    <?php foreach( $mahasiswa as $row ) : ?>
     <tr>
         <td><?= $i; ?></td>
         <td>
@@ -50,11 +34,11 @@ $result = mysqli_query($db, "SELECT * FROM mahasiswa" );
             <a href="">Delete</a>
         </td>
         <td><img src="img/<?= $row["Gambar"]; ?>" width="60"></td>
-        <td><?= $row["Nim"]; ?></td>
-        <td><?= $row["Nama"]; ?></td>
+        <td><?php echo $row["Nim"]; ?></td>
+        <td><?php echo $row["Nama"]; ?></td>
     </tr>
     <?php $i++; ?>
-    <?php endwhile ?>
+    <?php endforeach; ?>
 
 
 </table>
