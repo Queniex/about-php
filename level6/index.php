@@ -1,6 +1,12 @@
 <?php
 require 'functions.php';
 $mahasiswa = query("SELECT * FROM mahasiswa");
+
+// if find button was pressed
+if ( isset($_POST["find"]) ){
+    $mahasiswa = find($_POST["keyword"]);
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -16,6 +22,14 @@ $mahasiswa = query("SELECT * FROM mahasiswa");
 <h1>Daftar Mahasiswa</h1>
 <a href="tambah.php">Tambah data mahasiswa</a>
 <br><br>
+
+    <form action="" method="POST">
+
+        <input type="text" name="keyword" size="40" autofocus placeholder="Enter keyword.." autocomplete="off">
+        <button type="submit" name="find">Find!</button>
+
+    </form>
+<br>
 
 <table border="1" cellpadding="10" cellspacing="0">
 
