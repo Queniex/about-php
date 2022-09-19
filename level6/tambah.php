@@ -6,6 +6,8 @@ require 'functions.php';
 // checking is submit button has been press yet.
 if ( isset($_POST["submit"]) ){
     
+    // var_dump($_POST);
+    // var_dump($_FILES); die;
     // taking data from every element of the form
     // $nim = $_POST["Nim"];
     // $nama = $_POST["Nama"];
@@ -63,7 +65,7 @@ if ( isset($_POST["submit"]) ){
 <body>
     <h1>Tambah Data Mahasiswa</h1>
 
-    <form action="" method="POST">
+    <form action="" method="POST" enctype="multipart/form-data">
         <ul>
             <li>
                 <label for="Nim">Nim : </label>
@@ -75,7 +77,7 @@ if ( isset($_POST["submit"]) ){
             </li>
             <li>
                 <label for="Gambar">Gambar : </label>
-                <input type="text" id="Gambar" name="Gambar" required>
+                <input type="file" id="Gambar" name="Gambar" required>
             </li>
             <li>
                 <button type="submit" name="submit">Tambah Data!</button>
