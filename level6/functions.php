@@ -15,7 +15,13 @@ function add($data) {
     global $conn;
     $nim = htmlspecialchars($data["Nim"]);
     $nama = htmlspecialchars($data["Nama"]);
-    $gambar = htmlspecialchars($data["Gambar"]);
+    // $gambar = htmlspecialchars($data["Gambar"]);
+
+    // upload picture
+    $gambar = upload();
+    if( !$gambar ) {
+        return false;
+    }
 
     $query = "INSERT INTO mahasiswa 
                 VALUES
@@ -23,6 +29,58 @@ function add($data) {
     mysqli_query($conn, $query);
 
     return mysqli_affected_rows($conn);
+}
+
+function upload() {
+
+    $fileName = $_FILES['Gambar']['name'];
+    $fileSize = $_FILES['Gambar']['size'];
+    $error = $_FILES['Gambar']['error'];
+    $tmpName = $_FILES['Gambar']['tmp_name'];
+
+    // check if there is no picture upload
+    if( $error === 4 ){
+        echo "
+            <script>
+                alert('Please upload a picture!')
+            </script>
+       ";
+       return false; 
+    }
+
+    // checking the file extension type
+    $validPicture = ['jpg', 'jpeg', 'png'];
+    $pictureExtension = explode('.', $fileName); // will return an array of the picture name;
+    $pictureExtension = strtolower( end( $pictureExtension ));
+    if( !in_array($pictureExtension, $validPicture) ) { // this function could find if a string is part of the array; 
+        echo "
+            <script>
+                alert('Your file type is not a picture!')
+            </script>
+       ";
+       return false;
+    }
+
+    // checking the file size
+    if( $fileSize > 1000000 ) {
+        echo "
+            <script>
+                alert('Your picture size is too big!')
+            </script>
+       ";
+       return false;
+    }
+
+    // picture ready to be upload
+    // generate new picture name
+    $newPictureName = uniqid();
+    $newPictureName .= '.';
+    $newPictureName .= $pictureExtension;
+
+    move_uploaded_file($tmpName, 'img/' . $newPictureName);
+
+    return $newPictureName;
+
 }
 
 function deletes($id) {
@@ -38,7 +96,15 @@ function edit($data) {
     $id = $data["id"];
     $nim = htmlspecialchars($data["Nim"]);
     $nama = htmlspecialchars($data["Nama"]);
-    $gambar = htmlspecialchars($data["Gambar"]);
+    // $gambar = htmlspecialchars($data["Gambar"]);
+    $oldPicture = htmlspecialchars($data["Gambar"]);
+
+    // check if user choosing a new picture
+    if( $_FILES['Gambar']['error'] === 4 ) {
+        $gambar = $oldPicture;
+    } else {
+        $gambar = upload();
+    }
 
     $query = "UPDATE mahasiswa SET
                Nama = '$nama',

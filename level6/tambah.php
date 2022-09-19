@@ -31,14 +31,14 @@ if ( isset($_POST["submit"]) ){
     if( add($_POST) > 0 ){
        echo "
             <script>
-                alert('data berhasil ditambahkan!')
+                alert('data successfully being upload!')
                 document.location.href = 'index.php'
             </script>
        "; 
     } else {
         echo "
             <script>
-                alert('data gagal ditambahkan!')
+                alert('data failed to be upload!')
                 document.location.href = 'index.php'
             </script>
        "; 
