@@ -1,3 +1,25 @@
+<?php
+    require 'functions.php';
+
+    // checking that user has pressed the register button;
+    if( isset($_POST["register"]) ) {
+
+       if( regist($_POST) > 0 ) {
+        echo "
+            <script>
+                alert('user successfully added !')
+                document.location.href = 'regist.php'
+            </script>
+       "; 
+       } else {
+        echo mysqli_error($conn);
+       }
+
+    }
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
