@@ -1,12 +1,30 @@
 <?php
+require 'functions.php';
 session_start();
+
+if( isset($_COOKIE['id']) && isset($_COOKIE['key']) ) {
+    // if( $_COOKIE['login'] == 'true' ) {
+    //     $_SESSION['login'] = true;
+    // }
+
+    $id = $_COOKIE['id'];
+    $key = $_COOKIE['key'];
+
+    // get username using id
+    $result = mysqli_query($conn, "SELECT username FROM users WHERE id = $id");
+    $row =  mysqli_fetch_assoc($result);
+
+    // chcking cookie dan username
+    if( $key === hash('sha256', $row['username']) ) {
+        $_SESSION['login'] = true;
+    }     
+
+}
 
 if( isset($_SESSION["login"]) ) {
     header("Location: index.php");
     exit;
 }
-
-require 'functions.php';
 
 if( isset($_POST["login"]) ) {
 
@@ -24,6 +42,13 @@ if( isset($_POST["login"]) ) {
 
             // set session
             $_SESSION["login"] =  true;
+
+            // check remember me    
+            if( isset($_POST['remember']) ) {
+                // make cookie
+                setcookie('id', $row['id'], time() + 60);
+                setcookie('key', hash('sha256', $row['username']), time() + 60);
+            }
 
             header("Location: index.php");
             exit;
@@ -44,7 +69,7 @@ if( isset($_POST["login"]) ) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>login</title>
     <style>
-        label{
+        label.2{
             display : block;
         }
         ul li{
@@ -65,13 +90,18 @@ if( isset($_POST["login"]) ) {
 
         <ul>
             <li>
-                <label for="username">Username : </label>
+                <label class="2" for="username">Username : </label>
                 <input type="username" name="username" id="username">
             </li>
 
             <li>
-                <label for="password">Password : </label>
+                <label class="2" for="password">Password : </label>
                 <input type="password" name="password" id="password">
+            </li>
+
+            <li>
+                <input type="checkbox" name="remember" id="remember">
+                <label for="remember">Remember me : </label>
             </li>
             
             <li>
