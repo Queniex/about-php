@@ -9,8 +9,17 @@ if( isset($_POST["login"]) ) {
     $result = mysqli_query($conn, "SELECT * FROM users WHERE username = '$username'");
 
     // check username
-    
+    if( mysqli_num_rows($result) === 1 ) {
 
+        // check password
+        $row = mysqli_fetch_assoc($result);
+        if( password_verify($password, $row["password"]) ) {// to check does the string same as the hash
+            header("Location: index.php");
+            exit;
+        }
+    }  
+
+    $error = true;
 }
 
 
@@ -36,6 +45,10 @@ if( isset($_POST["login"]) ) {
 <body>
     
     <h1>Login Page</h1>
+
+    <?php if( isset($error) ) : ?>
+       <p style="color: red; font-style: italic;">Password / Username is incorrect!</p>
+    <?php endif; ?>
 
     <form action="" method="post">
 
