@@ -60,7 +60,8 @@
         </li>
         
         <li>
-            <button type="submit" name="register"> Register! </button>
+            <button type="submit" name="register"> Register! </button> <br> <br>
+            <a href="login.php">Login</a>
         </li>
     </ul>
 
