@@ -7,7 +7,16 @@ if( !isset($_SESSION["login"]) ) {
 }
 
 require 'functions.php';
-$mahasiswa = query("SELECT * FROM mahasiswa");
+
+// pagination
+// configuration
+$totalDataPage = 2;
+$totalData = count(query("SELECT * FROM mahasiswa"));
+$totalPage = ceil($totalData / $totalDataPage);
+$activePage = ( isset($_GET["page"]) ) ? $_GET["page"] : 1;
+$data = ($totalDataPage * $activePage ) - $totalDataPage;
+
+$mahasiswa = query("SELECT * FROM mahasiswa LIMIT $data, $totalDataPage");
 
 // if find button was pressed
 if ( isset($_POST["find"]) ){
@@ -26,7 +35,7 @@ if ( isset($_POST["find"]) ){
 </head>
 <body>
     
-    <a href="logut.php">Logout</a>
+    <a href="logout.php">Logout</a>
 
 <h1>Daftar Mahasiswa</h1>
 <a href="tambah.php">Tambah data mahasiswa</a>
@@ -38,6 +47,25 @@ if ( isset($_POST["find"]) ){
         <button type="submit" name="find">Find!</button>
 
     </form>
+    <br> 
+    <!-- Navigation -->
+
+    <?php if( $activePage > 1 ) : ?>
+        <a href="?page=<?= $activePage - 1; ?>">&laquo;</a>
+    <?php endif; ?>  
+
+    <?php for( $i = 1; $i <= $totalPage; $i++ ) : ?>
+        <?php if( $i == $activePage ) : ?>
+            <a style="font-weight: bold; color: red;" href="?page=<?= $i; ?>"><?= $i; ?></a>
+        <?php else : ?>
+            <a href="?page=<?= $i; ?>"><?= $i; ?></a>    
+        <?php endif; ?>
+            
+    <?php endfor; ?>
+
+    <?php if( $activePage < $totalPage ) : ?>
+        <a href="?page=<?= $activePage + 1; ?>">&raquo;</a>
+    <?php endif; ?>  
 <br>
 
 <table border="1" cellpadding="10" cellspacing="0">
