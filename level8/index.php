@@ -67,6 +67,6 @@ if ( isset($_POST["find"]) ){
 
 
 </table>
-
+<script src="js/script.js"></script>
 </body>
 </html>
