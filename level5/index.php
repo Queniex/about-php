@@ -1,6 +1,6 @@
 <?php
 require 'functions.php';
-$mahasiswa = query("SELECT * FROM mahasiswa");
+$mahasiswa = query("SELECT Id, Nama, Gambar, Nim, Tugas, Uts, Uas, round((tugas+uts+uas)/3,1) AS Akhir FROM mahasiswa");
 ?>
 
 <!DOCTYPE html>
@@ -25,6 +25,10 @@ $mahasiswa = query("SELECT * FROM mahasiswa");
         <th>Gambar</th>
         <th>Nim</th>
         <th>Nama</th>
+        <th>Nilai Tugas</th>
+        <th>Nilai UTS</th>
+        <th>Nilai UAS</th>
+        <th>Nilai Akhir</th>
     </tr>
 
     <?php $i = 1; ?>
@@ -38,6 +42,10 @@ $mahasiswa = query("SELECT * FROM mahasiswa");
         <td><img src="img/<?= $row["Gambar"]; ?>" width="60"></td>
         <td><?php echo $row["Nim"]; ?></td>
         <td><?php echo $row["Nama"]; ?></td>
+        <td><?php echo $row["Tugas"]; ?></td>
+        <td><?php echo $row["Uts"]; ?></td>
+        <td><?php echo $row["Uas"]; ?></td>
+        <td><?php echo $row["Akhir"]; ?></td>
     </tr>
     <?php $i++; ?>
     <?php endforeach; ?>

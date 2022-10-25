@@ -78,6 +78,18 @@ if ( isset($_POST["submit"]) ){
                 <input type="text" id="Gambar" name="Gambar" required>
             </li>
             <li>
+                <label for="Tugas">Nilai Tugas : </label>
+                <input type="text" id="Tugas" name="Tugas" required>
+            </li>
+            <li>
+                <label for="Uts">Nilai Uts : </label>
+                <input type="text" id="Uts" name="Uts" required>
+            </li>
+            <li>
+                <label for="Uas">Nilai Uas : </label>
+                <input type="text" id="Uas" name="Uas" required>
+            </li>
+            <li>
                 <button type="submit" name="submit">Tambah Data!</button>
             </li>
         </ul>

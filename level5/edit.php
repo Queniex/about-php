@@ -5,7 +5,7 @@ require 'functions.php';
 $id = $_GET["id"];
 
 // get data query using id as a parameter
-$mhs = query("SELECT * FROM mahasiswa WHERE id = $id")[0]; //because the id is integer we dont need any (" ").
+$mhs = query("SELECT Id, Nama, Gambar, Nim, Tugas, Uts, Uas, round((tugas+uts+uas)/3,1) AS Akhir FROM mahasiswa WHERE id = $id")[0]; //because the id is integer we dont need any (" ").
 //var_dump($mhs);
 
 // checking is submit button has been press yet.
@@ -63,6 +63,18 @@ if ( isset($_POST["submit"]) ){
             <li>
                 <label for="Gambar">Gambar : </label>
                 <input type="text" id="Gambar" name="Gambar" required value="<?= $mhs["Gambar"]; ?>">
+            </li>
+            <li>
+                <label for="Tugas">Nilai Tugas : </label>
+                <input type="text" id="Tugas" name="Tugas" required value="<?= $mhs["Tugas"]; ?>">
+            </li>
+            <li>
+                <label for="Uts">Nilai Uts : </label>
+                <input type="text" id="Uts" name="Uts" required value="<?= $mhs["Uts"]; ?>">
+            </li>
+            <li>
+                <label for="Uas">Nilai Uas : </label>
+                <input type="text" id="Uas" name="Uas" required value="<?= $mhs["Uas"]; ?>">
             </li>
             <li>
                 <button type="submit" name="submit">Update Data!</button>

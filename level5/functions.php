@@ -16,10 +16,13 @@ function add($data) {
     $nim = htmlspecialchars($data["Nim"]);
     $nama = htmlspecialchars($data["Nama"]);
     $gambar = htmlspecialchars($data["Gambar"]);
+    $tugas = htmlspecialchars($data["Tugas"]);
+    $uts = htmlspecialchars($data["Uts"]);
+    $uas = htmlspecialchars($data["Uas"]);
 
     $query = "INSERT INTO mahasiswa 
                 VALUES
-               ('', '$nama', '$nim', '$gambar')"; 
+               ('', '$nama', '$nim', '$gambar', '$tugas', '$uts', '$uas')"; 
     mysqli_query($conn, $query);
 
     return mysqli_affected_rows($conn);
@@ -39,11 +42,17 @@ function edit($data) {
     $nim = htmlspecialchars($data["Nim"]);
     $nama = htmlspecialchars($data["Nama"]);
     $gambar = htmlspecialchars($data["Gambar"]);
+    $tugas = htmlspecialchars($data["Tugas"]);
+    $uts = htmlspecialchars($data["Uts"]);
+    $uas = htmlspecialchars($data["Uas"]);
 
     $query = "UPDATE mahasiswa SET
                Nama = '$nama',
                Nim = '$nim',
-               Gambar = '$gambar'
+               Gambar = '$gambar',
+               Tugas = '$tugas',
+               Uts = '$uts',
+               Uas = '$uas'
                WHERE Id = $id"; 
 
     mysqli_query($conn, $query);
